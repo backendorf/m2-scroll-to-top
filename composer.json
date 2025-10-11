@@ -1,0 +1,16 @@
+{
+  "name": "backendorf/m2-scroll-to-top",
+  "description": "A simple scroll to top button to Adobe Commerce\n\nResources\n",
+  "type": "magento2-module",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Backendorf\\ScrollToTop\\": ""
+    }
+  }
+}

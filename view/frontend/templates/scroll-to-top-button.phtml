@@ -1,0 +1,36 @@
+<?php
+$helperData = $this->helper(Backendorf\ScrollToTop\Helper\Data::class);
+?>
+
+<?php
+
+if ($helperData->isModuleEnabled()) {
+    ?>
+    <button id="btn-scroll-to-top" class="<?= $helperData->getPosition(); ?> <?= $helperData->getStyle(); ?>"
+            style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+            <path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z" fill="currentColor"/>
+        </svg>
+    </button>
+    <script>
+        require(
+            ['jquery'],
+            function ($) {
+                let toTopBtn = $("#btn-scroll-to-top");
+                toTopBtn.on("click", function () {
+                    $('html').animate({scrollTop: 0}, 1000);
+                })
+                $(document).ready(function () {
+                    $(window).scroll(function () {
+                        if ($(window).scrollTop() > 0) {
+                            toTopBtn.show();
+                        } else {
+                            toTopBtn.hide();
+                        }
+                    })
+                })
+            })
+    </script>
+    <?php
+}
+?>
