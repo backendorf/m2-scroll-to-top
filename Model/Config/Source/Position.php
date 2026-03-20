@@ -1,32 +1,21 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Backendorf\ScrollToTop\Model\Config\Source;
+namespace Backentec\ScrollToTop\Model\Config\Source;
 
-use Magento\Framework\Option\ArrayInterface;
+use Magento\Framework\Data\OptionSourceInterface;
 
-class Position implements ArrayInterface
+class Position implements OptionSourceInterface
 {
-
+    /**
+     * @inheritdoc
+     */
     public function toOptionArray(): array
     {
         return [
-            [
-                'value' => 'left',
-                'label' => __('Left')
-            ],
-            [
-                'value' => 'right',
-                'label' => __('Right')
-            ]
-        ];
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'left' => __('Left'),
-            'right' => __('Right')
+            ['value' => 'left',  'label' => __('Left')],
+            ['value' => 'right', 'label' => __('Right')]
         ];
     }
 }

@@ -1,36 +1,40 @@
 <?php
-$helperData = $this->helper(Backendorf\ScrollToTop\Helper\Data::class);
-?>
 
-<?php
+declare(strict_types=1);
 
-if ($helperData->isModuleEnabled()) {
-    ?>
-    <button id="btn-scroll-to-top" class="<?= $helperData->getPosition(); ?> <?= $helperData->getStyle(); ?>"
-            style="display: none;">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-            <path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z" fill="currentColor"/>
-        </svg>
-    </button>
-    <script>
-        require(
-            ['jquery'],
-            function ($) {
-                let toTopBtn = $("#btn-scroll-to-top");
-                toTopBtn.on("click", function () {
-                    $('html').animate({scrollTop: 0}, 1000);
-                })
-                $(document).ready(function () {
-                    $(window).scroll(function () {
-                        if ($(window).scrollTop() > 0) {
-                            toTopBtn.show();
-                        } else {
-                            toTopBtn.hide();
-                        }
-                    })
-                })
-            })
-    </script>
-    <?php
-}
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Backentec\ScrollToTop\Helper\Data $helperData */
+$helperData = $this->helper(\Backentec\ScrollToTop\Helper\Data::class);
+
+$position = $block->escapeHtmlAttr($helperData->getPosition());
+$style    = $block->escapeHtmlAttr($helperData->getStyle());
 ?>
+<button id="btn-scroll-to-top"
+        class="<?= /* @noEscape */ $position ?> <?= /* @noEscape */ $style ?>"
+        style="display:none;"
+        aria-label="<?= $block->escapeHtmlAttr(__('Scroll to top')) ?>"
+        title="<?= $block->escapeHtmlAttr(__('Scroll to top')) ?>">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
+         aria-hidden="true" focusable="false">
+        <path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z" fill="currentColor"/>
+    </svg>
+</button>
+<script>
+    require(['jquery'], function ($) {
+        'use strict';
+
+        var $btn = $('#btn-scroll-to-top');
+
+        $btn.on('click', function () {
+            $('html, body').animate({ scrollTop: 0 }, 600);
+        });
+
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() > 100) {
+                $btn.fadeIn(300);
+            } else {
+                $btn.fadeOut(300);
+            }
+        });
+    });
+</script>

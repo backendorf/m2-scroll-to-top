@@ -1,16 +1,42 @@
 {
-  "name": "backendorf/m2-scroll-to-top",
-  "description": "A simple scroll to top button to Adobe Commerce\n\nResources\n",
+  "name": "backentec/m2-scroll-to-top",
+  "description": "A lightweight and configurable Scroll to Top button for Adobe Commerce and Magento 2 storefronts.",
   "type": "magento2-module",
+  "version": "1.0.0",
   "license": "MIT",
-  "minimum-stability": "dev",
-  "require": {},
+  "authors": [
+    {
+      "name": "Backentec",
+      "email": "contact@backentec.com",
+      "homepage": "https://backentec.com",
+      "role": "Developer"
+    }
+  ],
+  "keywords": [
+    "magento2",
+    "adobe-commerce",
+    "scroll-to-top",
+    "backentec",
+    "frontend",
+    "ux",
+    "hyva",
+    "hyva-compatible"
+  ],
+  "require": {
+    "php": ">=8.1",
+    "magento/framework": ">=103.0"
+  },
+  "suggest": {
+    "hyva-themes/magento2-theme-module": "Required for Hyvä Theme compatibility."
+  },
   "autoload": {
     "files": [
       "registration.php"
     ],
     "psr-4": {
-      "Backendorf\\ScrollToTop\\": ""
+      "Backentec\\ScrollToTop\\": ""
     }
-  }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }

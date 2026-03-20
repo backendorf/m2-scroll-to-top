@@ -2,32 +2,40 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="backendorf" translate="label" sortOrder="999">
-            <label>Backendorf</label>
+        <tab id="backentec" translate="label" sortOrder="999">
+            <label>Backentec</label>
         </tab>
-        <section id="scrolltotop" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
-            <label>ScrollToTop</label>
-            <tab>backendorf</tab>
-            <resource>Backendorf_ScrollToTop::config_backendorf_scrolltotop</resource>
-            <group id="general" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+        <section id="scrolltotop" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                 translate="label">
+            <label>Scroll To Top</label>
+            <tab>backentec</tab>
+            <resource>Backentec_ScrollToTop::config_scrolltotop</resource>
+            <group id="general" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                   translate="label">
                 <label>General</label>
-                <field id="enabled" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
-                       translate="label">
+                <field id="enabled" type="select" sortOrder="10" showInWebsite="1" showInStore="1"
+                       showInDefault="1" translate="label comment">
                     <label>Enabled</label>
-                    <comment/>
+                    <comment>Enable or disable the Scroll to Top button on the storefront.</comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="position" type="select" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1"
-                       translate="label">
+                <field id="position" type="select" sortOrder="20" showInWebsite="1" showInStore="1"
+                       showInDefault="1" translate="label comment">
                     <label>Position</label>
-                    <comment/>
-                    <source_model>Backendorf\ScrollToTop\Model\Config\Source\Position</source_model>
+                    <comment>Choose the horizontal position of the button.</comment>
+                    <source_model>Backentec\ScrollToTop\Model\Config\Source\Position</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
                 </field>
-                <field id="style" type="select" sortOrder="30" showInWebsite="1" showInStore="1" showInDefault="1"
-                       translate="label">
+                <field id="style" type="select" sortOrder="30" showInWebsite="1" showInStore="1"
+                       showInDefault="1" translate="label comment">
                     <label>Style</label>
-                    <comment/>
-                    <source_model>Backendorf\ScrollToTop\Model\Config\Source\Style</source_model>
+                    <comment>Choose the shape style of the button.</comment>
+                    <source_model>Backentec\ScrollToTop\Model\Config\Source\Style</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
                 </field>
             </group>
         </section>

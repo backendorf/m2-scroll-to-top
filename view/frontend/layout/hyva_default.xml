@@ -3,8 +3,11 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="before.body.end">
-            <block name="backentec_scrolltotop"
-                   template="Backentec_ScrollToTop::scroll-to-top-button.phtml"
+            <referenceBlock name="backentec_scrolltotop" remove="true"/>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block name="backentec_scrolltotop_hyva"
+                   template="Backentec_ScrollToTop::hyva/scroll-to-top-button.phtml"
                    ifconfig="scrolltotop/general/enabled"/>
         </referenceContainer>
     </body>
